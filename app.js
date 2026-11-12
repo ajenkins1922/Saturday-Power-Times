@@ -107,16 +107,3 @@ monthPicker.onchange=()=>showMonth(months[Number(monthPicker.value)]);
 showMonth(selected);
 render();
 setInterval(render,1000);
-const calendarUrl = document.querySelector('#calendar-url');
-const copyStatus = document.querySelector('#copy-status');
-calendarUrl.addEventListener('focus',()=>calendarUrl.select());
-document.querySelector('#copy-calendar').addEventListener('click',async()=>{
-  try {
-    await navigator.clipboard.writeText(calendarUrl.value);
-    copyStatus.textContent = 'Link copied.';
-  } catch {
-    calendarUrl.focus();
-    calendarUrl.select();
-    copyStatus.textContent = 'Press and hold the selected URL, then tap Copy.';
-  }
-});
